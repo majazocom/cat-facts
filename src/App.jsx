@@ -5,20 +5,28 @@ import HeaderButton from './Components/HeaderButton';
 
 function App() {
   const [facts, setFacts] = useState([]);
+  const [factCategory, setFactCategory] = useState('cats');
 
   useEffect(() => {
-    // det som skall köras
-    fetch('https://cat-fact.herokuapp.com/facts')
-    .then(response => response.json())
-    .then(data => setFacts(data))
-  }, []);
+    if (factCategory === 'cats') {
+      fetch('https://cat-fact.herokuapp.com/facts')
+        .then(response => response.json())
+        .then(data => setFacts(data))
+    } else if (factCategory === 'dogs') {
+      console.log('hej hundar');
+      setFacts([]);
+    } else if (factCategory === 'capybaras') {
+      console.log('hej kapybaror');
+      setFacts([]);
+    }
+  }, [factCategory]);
 
   return (
     <div className="App">
       <header>
-        <HeaderButton title="CAT FACTS" />
-        <HeaderButton title="DOG FACTS" />
-        <HeaderButton title="CAPYBARA FACTS" />
+        <HeaderButton title="CAT FACTS" action={() => { setFactCategory('cats') }} />
+        <HeaderButton title="DOG FACTS" action={() => { setFactCategory('dogs') }} />
+        <HeaderButton title="CAPYBARA FACTS" action={() => { setFactCategory('capybaras') }} />
       </header>
       <main>
         {

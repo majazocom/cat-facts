@@ -1,6 +1,6 @@
 function HeaderButton({title, action}) {
     return ( 
-        <button>{title}</button>
+        <button onClick={action}>{title}</button>
      );
 }
 
