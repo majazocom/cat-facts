@@ -1,8 +1,7 @@
-function Fact({ data }) {
-    const { text } = data;
+function Fact(props) {
     return (
         <article>
-            <h3>{text}</h3>
+            <h3>{props.data.text}</h3>
         </article>
     );
 }

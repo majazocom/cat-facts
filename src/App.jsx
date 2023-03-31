@@ -17,13 +17,15 @@ function App() {
       setFacts([]);
     } else if (factCategory === 'capybaras') {
       console.log('hej kapybaror');
-      setFacts([]);
+      fetch('https://majazocom.github.io/Data/capybarafacts.json')
+        .then(response => response.json())
+        .then(data => setFacts(data))
     }
   }, [factCategory]);
 
   return (
     <div className="App">
-      <header>
+      <header id="jox">
         <HeaderButton title="CAT FACTS" action={() => { setFactCategory('cats') }} />
         <HeaderButton title="DOG FACTS" action={() => { setFactCategory('dogs') }} />
         <HeaderButton title="CAPYBARA FACTS" action={() => { setFactCategory('capybaras') }} />
